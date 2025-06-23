@@ -1,0 +1,138 @@
+using System.Collections.Generic;
+using System.Collections.Concurrent;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Users.Models;
+using Microsoft.Extensions.Logging;
+
+[Route("api/Users")]
+[ApiController]
+public class UserController : ControllerBase 
+{
+    // I asked for a logger to log errors and other information, so I can track issues in production
+    private readonly ILogger<UserController> _logger;
+
+    public UserController(ILogger<UserController> logger)
+    {
+        _logger = logger;
+    }
+
+    // COPILOT suggested me to use a ConcurrentDictionary instead of the normal one, for thread safety
+    private static ConcurrentDictionary<int, User> users = new ConcurrentDictionary<int, User>(
+        new Dictionary<int, User>
+        {
+            { 1, new User { Name = "Alice", Email = "alice@example.com", JobTitle = ".Net Developer" } },
+            { 2, new User { Name = "Bob", Email = "bob@example.com", JobTitle = "Cybersecurity" } },
+            { 3, new User { Name = "Charlie", Email = "charlie@example.com", JobTitle = "HR" } }
+        }
+    );
+
+    // I asked for possible bugs and improvements and COPILOT suggested me to use a method to validate the email format - 
+    //I think is better to not add it here, since its out of controller responsabilities, but I will leave it here to easier understanding in review.
+    private bool IsValidEmail(string email)
+    {   
+        if (string.IsNullOrWhiteSpace(email))
+        {
+            return false;
+        }
+
+        // give me quickly the Regular expression for validating email format
+        var emailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        return System.Text.RegularExpressions.Regex.IsMatch(email, emailRegex);
+    }
+
+    // COPILOT suggested me to use a method to check for duplicate emails, I think is a good idea to avoid duplicates in the user list, since 
+    // the email is like a unique identifier for the user in this case that I use only name and email - a personal ID could be better in a real application
+    private bool IsEmailDuplicate(string email)
+    {
+        return users.Values.Any(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
+    }
+
+    // COPILOT found an error when I used {id:int?:min(1)} in the route I had to use an if instead
+    [HttpGet("{id:int?}")]
+    public IActionResult GetUser(int? id)
+    {
+        if (id.HasValue)
+        {
+            if (id.Value <= 0)
+            {
+                return BadRequest("ID must be a positive integer.");
+            }
+
+            if(users.TryGetValue(id.Value, out User user))
+            {
+                return Ok(user);
+            } 
+            return NotFound($"User with ID {id} not found.");
+        } 
+        return Ok(users.Values);
+    }
+
+    // COPILOT suggested me to use FromBody attribute here AND the use of IsNullOrWhiteSpace method to validate the user data
+    [HttpPost]
+    public IActionResult CreateUser([FromBody] User user)
+    {
+        try
+        {
+            if (user == null || string.IsNullOrWhiteSpace(user.Name) || string.IsNullOrWhiteSpace(user.Email) || 
+                string.IsNullOrWhiteSpace(user.JobTitle) || !IsValidEmail(user.Email) || IsEmailDuplicate(user.Email))
+            {
+                return BadRequest("Invalid user data.");
+            }
+
+             // int newId = users.Keys.Max() + 1; 
+            // COPILOT suggested me to use a safer way to generate the new ID, since the Max() method could throw an exception if the dictionary is empty
+            int newId = users.Any() ? users.Keys.Max() + 1 : 1;
+            users[newId] = user;
+
+            return CreatedAtAction(nameof(GetUser), new { id = newId }, user);
+        }
+        catch (Exception ex)
+        {
+            // Log the exception
+            _logger.LogError(ex, "Error occurred while creating a user.");
+            return StatusCode(500, "An unexpected error occurred.");
+        }
+    }
+
+    [HttpPut("{id:int:min(1)}")]
+    public IActionResult UpdateUser(int id, [FromBody] User updatedUser)
+    {
+        // COPILOT suggested me this but I used the min(1) attribute in the route instead
+
+        // if (id <= 0)
+        // {
+        //     return BadRequest("ID must be a positive integer.");
+        // }
+
+        if (updatedUser == null || string.IsNullOrWhiteSpace(updatedUser.Name) || string.IsNullOrWhiteSpace(updatedUser.Email))
+        {
+            return BadRequest("Invalid user data.");
+        }
+
+        if (users.TryGetValue(id, out User existingUser))
+        {
+            // Update the user details
+            existingUser.Name = updatedUser.Name;
+            existingUser.Email = updatedUser.Email;
+            existingUser.JobTitle = updatedUser.JobTitle;
+            existingUser.UpdatedAt = DateTime.UtcNow;
+
+            return Ok(existingUser);
+        }
+
+        return NotFound($"User with ID {id} not found.");
+    }
+
+// COPILOT helped me here with the NoContent response that I did not know about
+    [HttpDelete("{id:int:min(1)}")]
+    public IActionResult DeleteUser(int id)
+    {
+        if (users.TryRemove(id, out _))
+        {
+            return NoContent(); // Successfully deleted
+        }
+
+        return NotFound($"User with ID {id} not found.");
+    }
+}
