@@ -6,8 +6,6 @@ public class RouteCounterService : IRouteCounterService
     { 
         if (string.IsNullOrWhiteSpace(path)) 
             throw new ArgumentException("Path cannot be null or empty.", nameof(path)); 
-
-        // Use AddOrUpdate to ensure thread safety and atomicity
         _counts.AddOrUpdate(path, 1, (key, current) => current + 1); 
     } 
 
