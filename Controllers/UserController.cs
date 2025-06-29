@@ -29,16 +29,17 @@ public class UserController : ControllerBase
 
     // I asked for possible bugs and improvements and COPILOT suggested me to use a method to validate the email format - 
     //I think is better to not add it here, since its out of controller responsabilities, but I will leave it here to easier understanding in review.
-    private bool IsValidEmail(string email)
-    {   
-        if (string.IsNullOrWhiteSpace(email))
+    public bool IsValidEmail(string email)
+    {
+        try
+        {
+            var mailAddress = new System.Net.Mail.MailAddress(email);
+            return true;
+        }
+        catch
         {
             return false;
         }
-
-        // give me quickly the Regular expression for validating email format
-        var emailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-        return System.Text.RegularExpressions.Regex.IsMatch(email, emailRegex);
     }
 
     // COPILOT suggested me to use a method to check for duplicate emails, I think is a good idea to avoid duplicates in the user list, since 
@@ -48,24 +49,19 @@ public class UserController : ControllerBase
         return users.Values.Any(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
     }
 
-    // COPILOT found an error when I used {id:int?:min(1)} in the route I had to use an if instead
-    [HttpGet("{id:int?}")]
-    public IActionResult GetUser(int? id)
+    [HttpGet]
+    public IActionResult GetAllUsers()
     {
-        if (id.HasValue)
-        {
-            if (id.Value <= 0)
-            {
-                return BadRequest("ID must be a positive integer.");
-            }
-
-            if(users.TryGetValue(id.Value, out User user))
-            {
-                return Ok(user);
-            } 
-            return NotFound($"User with ID {id} not found.");
-        } 
         return Ok(users.Values);
+    }
+
+    [HttpGet("{id:int:min(1)}")]
+    public IActionResult GetUser(int id)
+    {
+        if (users.TryGetValue(id, out User user))
+            return Ok(user);
+
+        return NotFound($"User with ID {id} not found.");
     }
 
     // COPILOT suggested me to use FromBody attribute here AND the use of IsNullOrWhiteSpace method to validate the user data
@@ -77,7 +73,7 @@ public class UserController : ControllerBase
             if (user == null || string.IsNullOrWhiteSpace(user.Name) || string.IsNullOrWhiteSpace(user.Email) || 
                 string.IsNullOrWhiteSpace(user.JobTitle) || !IsValidEmail(user.Email) || IsEmailDuplicate(user.Email))
             {
-                return BadRequest("Invalid user data.");
+                return BadRequest("Invalid user data or email already exist.");
             }
 
              // int newId = users.Keys.Max() + 1; 
@@ -98,7 +94,7 @@ public class UserController : ControllerBase
     [HttpPut("{id:int:min(1)}")]
     public IActionResult UpdateUser(int id, [FromBody] User updatedUser)
     {
-        // COPILOT suggested me this but I used the min(1) attribute in the route instead
+        // COPILOT suggested me this, but I used the min(1) attribute in the route instead
 
         // if (id <= 0)
         // {
@@ -130,7 +126,7 @@ public class UserController : ControllerBase
     {
         if (users.TryRemove(id, out _))
         {
-            return NoContent(); // Successfully deleted
+            return NoContent(); // Successfully deleted - return 204 code
         }
 
         return NotFound($"User with ID {id} not found.");
