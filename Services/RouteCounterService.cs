@@ -1,3 +1,6 @@
+using System.Collections.Concurrent;
+using UserManagementAPI.Services;
+
 public class RouteCounterService : IRouteCounterService 
 { 
     private readonly ConcurrentDictionary<string, int> _counts = new(); 

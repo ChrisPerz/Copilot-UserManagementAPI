@@ -1,3 +1,4 @@
+using UserManagementAPI.Services;
 public class RouteCounterMiddleware 
 { 
     private readonly RequestDelegate _next; 

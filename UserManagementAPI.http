@@ -1,6 +1,38 @@
-@UserManagementAPI_HostAddress = http://localhost:5199
+//Asked Copilot to make the document
 
-GET {{UserManagementAPI_HostAddress}}/weatherforecast/
-Accept: application/json
 
-###
+// PLEASE CHANGE THE PORT NUMBER TO THE ONE CREATED WHEN YOU START THE APP
+@baseUrl = https://localhost:7124/api/Users
+@json = application/json
+
+###  get all users
+GET {{baseUrl}}
+Accept: {{json}}
+
+###  get user by ID
+GET {{baseUrl}}/1
+Accept: {{json}}
+
+###  create a new user
+POST {{baseUrl}}
+Content-Type: {{json}}
+
+{
+  "name": "Diana",
+  "email": "diana@example.com",
+  "jobTitle": "Cloud Engineer"
+}
+
+###  Update user
+PUT {{baseUrl}}/2
+Content-Type: {{json}}
+
+{
+  "name": "Bob Updated",
+  "email": "bob_updated@example.com",
+  "jobTitle": "Cybersecurity Specialist"
+}
+
+###  Remove user
+DELETE {{baseUrl}}/3
+Accept: {{json}}

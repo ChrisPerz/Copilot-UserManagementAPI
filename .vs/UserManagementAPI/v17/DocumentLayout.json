@@ -1,0 +1,109 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|d:\\programacion\\c#_course\\net-course\\copilot-usermanagementapi\\middleware\\routecountermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|solutionrelative:middleware\\routecountermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|d:\\programacion\\c#_course\\net-course\\copilot-usermanagementapi\\usermanagementapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|solutionrelative:usermanagementapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|d:\\programacion\\c#_course\\net-course\\copilot-usermanagementapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|d:\\programacion\\c#_course\\net-course\\copilot-usermanagementapi\\services\\routecounterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|solutionrelative:services\\routecounterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|d:\\programacion\\c#_course\\net-course\\copilot-usermanagementapi\\services\\iroutecounterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|solutionrelative:services\\iroutecounterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T01:14:04.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IRouteCounterService.cs",
+              "DocumentMoniker": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Services\\IRouteCounterService.cs",
+              "RelativeDocumentMoniker": "Services\\IRouteCounterService.cs",
+              "ToolTip": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Services\\IRouteCounterService.cs",
+              "RelativeToolTip": "Services\\IRouteCounterService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T01:12:50.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RouteCounterService.cs",
+              "DocumentMoniker": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Services\\RouteCounterService.cs",
+              "RelativeDocumentMoniker": "Services\\RouteCounterService.cs",
+              "ToolTip": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Services\\RouteCounterService.cs",
+              "RelativeToolTip": "Services\\RouteCounterService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T01:08:55.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RouteCounterMiddleware.cs",
+              "DocumentMoniker": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Middleware\\RouteCounterMiddleware.cs",
+              "RelativeDocumentMoniker": "Middleware\\RouteCounterMiddleware.cs",
+              "ToolTip": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Middleware\\RouteCounterMiddleware.cs",
+              "RelativeToolTip": "Middleware\\RouteCounterMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T01:08:45.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserManagementAPI.http",
+              "DocumentMoniker": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\UserManagementAPI.http",
+              "RelativeDocumentMoniker": "UserManagementAPI.http",
+              "ToolTip": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\UserManagementAPI.http",
+              "RelativeToolTip": "UserManagementAPI.http",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-10-29T01:08:21.215Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
