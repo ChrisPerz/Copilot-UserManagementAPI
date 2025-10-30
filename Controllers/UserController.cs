@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Users.Models;
 using Microsoft.Extensions.Logging;
+using UserManagementAPI.Services;
 
 [Route("api/Users")]
 [ApiController]
@@ -11,10 +12,12 @@ public class UserController : ControllerBase
 {
     // I asked for a logger to log errors and other information, so I can track issues in production
     private readonly ILogger<UserController> _logger;
+    private readonly IRouteCounterService _routeCounter;
 
-    public UserController(ILogger<UserController> logger)
+    public UserController(ILogger<UserController> logger, IRouteCounterService routeCounter)
     {
         _logger = logger;
+        _routeCounter = routeCounter;
     }
 
     // COPILOT suggested me to use a ConcurrentDictionary instead of the normal one, for thread safety
@@ -130,5 +133,13 @@ public class UserController : ControllerBase
         }
 
         return NotFound($"User with ID {id} not found.");
+    }
+
+
+    [HttpGet]
+    [Route("routeCounter")]
+    public IActionResult GetAllRoutesCount()
+    {
+        return Ok(_routeCounter.GetCounts());
     }
 }

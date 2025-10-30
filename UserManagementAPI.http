@@ -1,21 +1,29 @@
-//Asked Copilot to make the document
-
-
 // PLEASE CHANGE THE PORT NUMBER TO THE ONE CREATED WHEN YOU START THE APP
 @baseUrl = https://localhost:7124/api/Users
 @json = application/json
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.TEST_TOKEN_EXAMPLE
 
-###  get all users
+###  Get all users
+GET {{baseUrl}}
+Accept: {{json}}
+Authorization: Bearer {{token}}
+
+
+### EXAMPLE NOT AUTH
 GET {{baseUrl}}
 Accept: {{json}}
 
-###  get user by ID
+
+
+###  Get user by ID
 GET {{baseUrl}}/1
 Accept: {{json}}
+Authorization: Bearer {{token}}
 
-###  create a new user
+###  Create a new user
 POST {{baseUrl}}
 Content-Type: {{json}}
+Authorization: Bearer {{token}}
 
 {
   "name": "Diana",
@@ -26,6 +34,7 @@ Content-Type: {{json}}
 ###  Update user
 PUT {{baseUrl}}/2
 Content-Type: {{json}}
+Authorization: Bearer {{token}}
 
 {
   "name": "Bob Updated",
@@ -36,3 +45,9 @@ Content-Type: {{json}}
 ###  Remove user
 DELETE {{baseUrl}}/3
 Accept: {{json}}
+Authorization: Bearer {{token}}
+
+###  Get path call counter
+GET {{baseUrl}}/routeCounter
+Accept: {{json}}
+Authorization: Bearer {{token}}
