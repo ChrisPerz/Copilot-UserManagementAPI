@@ -1,12 +1,48 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using UserManagementAPI.Models;
 using UserManagementAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IRouteCounterService, RouteCounterService>(); 
+builder.Services.AddSingleton<IRouteCounterService, RouteCounterService>();
+
+// Add Identity services
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDBContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+    options.UseInMemoryDatabase("UserManagementDB"));
+
+// Add authorization policies (without requiring authentication)
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireITDepartment", policy =>
+        policy.RequireClaim("Department", "IT"));
+});
 
 var app = builder.Build();
+
+// Add Role and claim auth
+RoleManager<IdentityRole> roleManager = app.Services.GetRequiredService<RoleManager<IdentityRole>>();
+if (!await roleManager.RoleExistsAsync("Admin"))
+{
+    await roleManager.CreateAsync(new IdentityRole("Admin"));
+}
+if (!await roleManager.RoleExistsAsync("User"))
+{
+    await roleManager.CreateAsync(new IdentityRole("User"));
+}
+
+Claim claim = new Claim("Permission", "CanAccessAdminPanel");
+IdentityRole adminRole = await roleManager.FindByNameAsync("Admin");
+if (adminRole != null && !(await roleManager.GetClaimsAsync(adminRole)).Any(c => c.Type == claim.Type && c.Value == claim.Value))
+{
+    await roleManager.AddClaimAsync(adminRole, claim);
+}
 
 // Error Handler Middleware
 app.Use(async (context, next) =>

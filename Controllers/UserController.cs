@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Users.Models;
 using Microsoft.Extensions.Logging;
 using UserManagementAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 
 [Route("api/Users")]
 [ApiController]
@@ -19,6 +20,9 @@ public class UserController : ControllerBase
         _logger = logger;
         _routeCounter = routeCounter;
     }
+
+
+    //These methods should be in a service layer, but for simplicity I will leave them here
 
     // COPILOT suggested me to use a ConcurrentDictionary instead of the normal one, for thread safety
     private static ConcurrentDictionary<int, User> users = new ConcurrentDictionary<int, User>(
@@ -53,6 +57,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public IActionResult GetAllUsers()
     {
         return Ok(users.Values);
@@ -123,8 +128,9 @@ public class UserController : ControllerBase
         return NotFound($"User with ID {id} not found.");
     }
 
-// COPILOT helped me here with the NoContent response that I did not know about
+    // COPILOT helped me here with the NoContent response that I did not know about
     [HttpDelete("{id:int:min(1)}")]
+    [Authorize(Policy = "CanAccessAdminPanel")]
     public IActionResult DeleteUser(int id)
     {
         if (users.TryRemove(id, out _))
