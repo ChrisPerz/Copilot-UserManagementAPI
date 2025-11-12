@@ -56,6 +56,23 @@ public class UserController : ControllerBase
         return users.Values.Any(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
     }
 
+    [HttpPost("Login")]
+    public IActionResult Login([FromBody] User loginUser)
+    {
+        if (loginUser == null || string.IsNullOrWhiteSpace(loginUser.Email))
+        {
+            return BadRequest("Invalid login data.");
+        }
+
+        var user = users.Values.FirstOrDefault(u => u.Email.Equals(loginUser.Email, StringComparison.OrdinalIgnoreCase));
+        if (user != null)
+        {
+            return Ok("Login successful.");
+        }
+
+        return Unauthorized("Invalid email or user does not exist.");
+    }
+
     [HttpGet]
     [Authorize(Roles = "Admin")]
     public IActionResult GetAllUsers()

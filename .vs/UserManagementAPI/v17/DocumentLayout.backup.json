@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|d:\\programacion\\c#_course\\net-course\\copilot-usermanagementapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|d:\\programacion\\c#_course\\net-course\\copilot-usermanagementapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|d:\\programacion\\c#_course\\net-course\\copilot-usermanagementapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5AE10BD6-0166-4133-A4CC-A7AC0BEA92D9}|UserManagementAPI.csproj|d:\\programacion\\c#_course\\net-course\\copilot-usermanagementapi\\usermanagementapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,31 +54,30 @@
               "RelativeToolTip": "Models\\RequestLog.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T23:26:30.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T23:26:30.142Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
               "ToolTip": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Controllers\\UserController.cs",
               "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowBIAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowBIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T16:44:46.055Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\PROGRAMACION\\C#_COURSE\\NET-course\\Copilot-UserManagementAPI\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T01:14:04.127Z",
               "EditorCaption": ""
@@ -93,8 +92,7 @@
               "RelativeToolTip": "Services\\IRouteCounterService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T01:12:50.245Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T01:12:50.245Z"
             },
             {
               "$type": "Document",
@@ -106,8 +104,7 @@
               "RelativeToolTip": "Services\\RouteCounterService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T01:08:55.559Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T01:08:55.559Z"
             },
             {
               "$type": "Document",
@@ -119,8 +116,7 @@
               "RelativeToolTip": "Middleware\\RouteCounterMiddleware.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T01:08:45.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T01:08:45.925Z"
             },
             {
               "$type": "Document",
@@ -132,8 +128,7 @@
               "RelativeToolTip": "UserManagementAPI.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2025-10-29T01:08:21.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T01:08:21.215Z"
             }
           ]
         }

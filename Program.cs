@@ -27,22 +27,26 @@ builder.Services.AddAuthorization(options =>
 var app = builder.Build();
 
 // Add Role and claim auth
-RoleManager<IdentityRole> roleManager = app.Services.GetRequiredService<RoleManager<IdentityRole>>();
-if (!await roleManager.RoleExistsAsync("Admin"))
+using (var scope = app.Services.CreateScope())
 {
-    await roleManager.CreateAsync(new IdentityRole("Admin"));
-}
-if (!await roleManager.RoleExistsAsync("User"))
-{
-    await roleManager.CreateAsync(new IdentityRole("User"));
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    if (!await roleManager.RoleExistsAsync("Admin"))
+        await roleManager.CreateAsync(new IdentityRole("Admin"));
+
+    if (!await roleManager.RoleExistsAsync("User"))
+        await roleManager.CreateAsync(new IdentityRole("User"));
+
+    var claim = new Claim("Permission", "CanAccessAdminPanel");
+    var adminRole = await roleManager.FindByNameAsync("Admin");
+
+    if (adminRole != null && !(await roleManager.GetClaimsAsync(adminRole))
+            .Any(c => c.Type == claim.Type && c.Value == claim.Value))
+    {
+        await roleManager.AddClaimAsync(adminRole, claim);
+    }
 }
 
-Claim claim = new Claim("Permission", "CanAccessAdminPanel");
-IdentityRole adminRole = await roleManager.FindByNameAsync("Admin");
-if (adminRole != null && !(await roleManager.GetClaimsAsync(adminRole)).Any(c => c.Type == claim.Type && c.Value == claim.Value))
-{
-    await roleManager.AddClaimAsync(adminRole, claim);
-}
 
 // Error Handler Middleware
 app.Use(async (context, next) =>
